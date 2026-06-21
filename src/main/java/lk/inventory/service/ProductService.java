@@ -1,7 +1,7 @@
-package lk.inventoty.service;
+package lk.inventory.service;
 
-import lk.inventoty.entity.Product;
-import lk.inventoty.repository.ProductRepository;
+import lk.inventory.entity.Product;
+import lk.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
