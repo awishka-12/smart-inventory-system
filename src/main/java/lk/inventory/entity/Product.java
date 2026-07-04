@@ -1,9 +1,8 @@
 package lk.inventory.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -13,10 +12,19 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotBlank(message = "Product name is required")
     private String name;
+
+   @Min(value = 1,message = "Price must be greater than 0")
     private double price;
+
+    @Min(value = 1,message = "quantity must greater than 0")
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
     public int getId() {
         return id;
@@ -48,5 +56,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
