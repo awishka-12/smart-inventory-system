@@ -11,7 +11,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank(message = "Product name is required")
     private String name;
@@ -20,17 +20,17 @@ public class Product {
     private double price;
 
     @Min(value = 1,message = "quantity must greater than 0")
-    private int quantity;
+        private int quantity;
 
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
