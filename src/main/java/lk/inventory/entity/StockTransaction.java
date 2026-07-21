@@ -12,7 +12,7 @@ public class StockTransaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
 
     private String type;
@@ -26,11 +26,11 @@ public class StockTransaction {
     @JoinColumn(name = "product_id")
     private Product  product;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

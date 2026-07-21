@@ -23,16 +23,16 @@ public class SupplierService {
         return repo.findAll();
     }
 
-    public Supplier getById(int id){
+    public Supplier getById(Long id){
         return repo.findById(id).orElse(null);
     }
 
-    public void delete(int id){
+    public void delete(Long id){
 
         repo.deleteById(id);
     }
 
-    public Supplier update(int id,Supplier supplier){
+    public Supplier update(Long id,Supplier supplier){
 
         Supplier supplier1 = repo.findById(id).orElse(null);
         if(supplier1 != null){

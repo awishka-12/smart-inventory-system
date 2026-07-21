@@ -28,19 +28,19 @@ private final SupplierService service;
     }
 
     @GetMapping("/{id}")
-    public Supplier getByid(@PathVariable int id){
+    public Supplier getByid(@PathVariable Long id){
         return service.getById(id);
     }
 
     @PutMapping("/{id}")
     public Supplier update(
-            @PathVariable int id,
+            @PathVariable Long id,
             @RequestBody Supplier supplier){
         return service.update(id,supplier);
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable Long id){
          service.delete(id);
         return "suppler Deleted Successfully";
     }

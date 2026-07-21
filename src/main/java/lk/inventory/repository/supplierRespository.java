@@ -4,6 +4,6 @@ import lk.inventory.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface supplierRespository
-extends JpaRepository<Supplier,Integer> {
+extends JpaRepository<Supplier,Long> {
 
 }
