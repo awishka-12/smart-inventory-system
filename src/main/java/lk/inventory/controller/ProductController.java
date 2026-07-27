@@ -1,5 +1,7 @@
 package lk.inventory.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lk.inventory.dto.ProductRequest;
 import lk.inventory.dto.ProductResponse;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Product API", description = "Manage Products")
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -29,6 +32,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @Operation(summary = "Get all products")
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
         return ResponseEntity.ok(service.findAll());
@@ -50,6 +54,13 @@ public class ProductController {
     public ResponseEntity<Void> deleteProductById(@RequestParam long id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductResponse>> searchProduct(
+            @RequestParam String name) {
+
+        return ResponseEntity.ok(service.searchByName(name));
     }
 
 }
